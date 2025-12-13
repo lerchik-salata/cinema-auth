@@ -1,8 +1,8 @@
 import type { IUserRepository, IHashingService, ITokenService, ILogger } from './interfaces.ts';
 import type { CoreCreateUserDto, CoreAuthResponse } from './types.ts';
-import { ConflictError, UnauthorizedError } from './errors.ts';
+import { ConflictError, UnauthorizedError } from './errors';
 
-class CoreAuthService {
+export class CoreAuthService {
   
   constructor(
     private userRepository: IUserRepository, 
@@ -30,7 +30,7 @@ class CoreAuthService {
     return {
       accessToken: accessToken,
       user: {
-        id: newUser._id,
+        _id: newUser._id,
         email: newUser.email,
         username: newUser.username,
       },
@@ -60,12 +60,10 @@ class CoreAuthService {
     return {
       accessToken: accessToken,
       user: {
-        id: user._id,
+        _id: user._id,
         email: user.email,
         username: user.username,
       },
     } as CoreAuthResponse;
   }
 }
-
-module.exports = { CoreAuthService };

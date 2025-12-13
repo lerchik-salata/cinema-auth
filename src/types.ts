@@ -14,7 +14,7 @@ export interface CoreCreateUserDto {
 export interface CoreAuthResponse {
   accessToken: string;
   user: {
-    id: string;
+    _id: string;
     email: string;
     username: string;
   };
